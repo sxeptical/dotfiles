@@ -1,0 +1,145 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font Mono", "JetBrainsMono Nerd Font", monospace;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.85);
+    color: #cdd6f4;
+}
+
+#workspaces,
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#cpu,
+#memory,
+#tray,
+#idle_inhibitor {
+    background-color: rgba(205, 214, 244, 0.06);
+    margin: 5px 3px;
+    padding: 5px 12px;
+    border-radius: 8px;
+}
+
+#workspaces {
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+#clock {
+    color: #89b4fa;
+    font-weight: 500;
+}
+
+#workspaces button {
+    padding: 4px 8px;
+    color: #6c7086;
+    background: transparent;
+    border-radius: 6px;
+    margin: 0 2px;
+    transition: all 0.15s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(205, 214, 244, 0.1);
+    color: #cdd6f4;
+}
+
+#workspaces button.active {
+    color: #cba6f7;
+    background: rgba(203, 166, 247, 0.2);
+}
+
+#workspaces button.urgent {
+    color: #f38ba8;
+    background: rgba(243, 139, 168, 0.2);
+}
+
+#idle_inhibitor {
+    color: #f5c2e7;
+}
+
+#idle_inhibitor.activated {
+    color: #cba6f7;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.charging { color: #94e2d5; }
+
+#battery.warning:not(.charging) { color: #f9e2af; }
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    color: #89dceb;
+}
+
+#network.disconnected { color: #f38ba8; }
+
+#pulseaudio {
+    color: #cba6f7;
+}
+
+#pulseaudio.muted { color: #6c7086; }
+
+#cpu {
+    color: #fab387;
+}
+
+#cpu.warning { color: #f9e2af; }
+
+#cpu.critical {
+    color: #f38ba8;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#memory {
+    color: #a6e3a1;
+}
+
+#tray {
+    margin-right: 10px;
+    padding: 5px 10px;
+}
+
+#tray > .passive { -gtk-icon-effect: dim; }
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+tooltip {
+    background: rgba(30, 30, 46, 0.95);
+    border: 1px solid rgba(205, 214, 244, 0.15);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 4px;
+}
+
+tooltip label { 
+    color: #cdd6f4; 
+    font-size: 11px; 
+}
+
+@keyframes blink {
+    to { color: #45475a; }
+}
