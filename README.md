@@ -16,6 +16,17 @@ dotfiles/
 
 ## Setup
 
+### Automatic
+
+```bash
+git clone https://github.com/sxeptical/dotfiles.git ~/dotfiles
+~/dotfiles/setup.sh
+```
+
+The script is idempotent — safe to re-run. Existing configs are backed up before linking.
+
+### Manual
+
 ```bash
 git clone https://github.com/sxeptical/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/hypr ~/.config/hypr
