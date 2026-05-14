@@ -1,20 +1,6 @@
 # Dotfiles
 
-Managed with git. Includes configs for:
-- Hyprland
-- Neovim (LazyVim)
-- tmux
-- Waybar
-
-## Structure
-
-```
-dotfiles/
-├── hypr/      # Hyprland config
-├── nvim/      # Neovim config (LazyVim)
-├── tmux/      # tmux config
-└── waybar/    # Waybar config
-```
+My configs for neovim, tmux and hyprland
 
 ## Setup
 
