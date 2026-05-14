@@ -2,6 +2,7 @@
 
 Managed with git. Includes configs for:
 - Hyprland
+- Neovim (LazyVim)
 - Waybar
 
 ## Structure
@@ -9,13 +10,15 @@ Managed with git. Includes configs for:
 ```
 dotfiles/
 ├── hypr/      # Hyprland config
+├── nvim/      # Neovim config (LazyVim)
 └── waybar/    # Waybar config
 ```
 
 ## Setup
 
 ```bash
-git clone <repo> ~/dotfiles
+git clone https://github.com/sxeptical/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/hypr ~/.config/hypr
+ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/waybar ~/.config/waybar
 ```
