@@ -3,6 +3,7 @@
 Managed with git. Includes configs for:
 - Hyprland
 - Neovim (LazyVim)
+- tmux
 - Waybar
 
 ## Structure
@@ -11,6 +12,7 @@ Managed with git. Includes configs for:
 dotfiles/
 ├── hypr/      # Hyprland config
 ├── nvim/      # Neovim config (LazyVim)
+├── tmux/      # tmux config
 └── waybar/    # Waybar config
 ```
 
@@ -31,5 +33,6 @@ The script is idempotent — safe to re-run. Existing configs are backed up befo
 git clone https://github.com/sxeptical/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/hypr ~/.config/hypr
 ln -s ~/dotfiles/nvim ~/.config/nvim
+ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/waybar ~/.config/waybar
 ```

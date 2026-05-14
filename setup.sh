@@ -19,24 +19,40 @@ link_config() {
     local src="$DOTFILES_DIR/$name"
     local dest="$CONFIG_DIR/$name"
 
+    _link "$src" "$dest" "$name"
+}
+
+link_home() {
+    local name="$1"
+    local src="$DOTFILES_DIR/$name/$2"
+    local dest="$HOME/$2"
+
+    _link "$src" "$dest" "$name"
+}
+
+_link() {
+    local src="$1"
+    local dest="$2"
+    local label="$3"
+
     if [ -L "$dest" ]; then
         local current_target
         current_target=$(readlink "$dest")
         if [ "$current_target" = "$src" ]; then
-            info "$name already linked"
+            info "$label already linked"
             return
         fi
-        warn "$name symlink exists but points to $current_target, replacing"
+        warn "$label symlink exists but points to $current_target, replacing"
         rm "$dest"
     elif [ -e "$dest" ]; then
         local backup="$dest.bak.$(date +%s)"
-        warn "$name exists, backing up to $backup"
+        warn "$label exists, backing up to $backup"
         mv "$dest" "$backup"
     fi
 
     mkdir -p "$(dirname "$dest")"
     ln -s "$src" "$dest"
-    info "linked $name"
+    info "linked $label"
 }
 
 # Clone dotfiles if not already present
@@ -52,5 +68,6 @@ fi
 link_config "hypr"
 link_config "nvim"
 link_config "waybar"
+link_home "tmux" ".tmux.conf"
 
 info "setup complete"
