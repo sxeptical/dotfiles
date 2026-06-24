@@ -57,10 +57,14 @@ _link() {
     info "linked $label"
 }
 
-setup_all() {
+setup_hyprland() {
     link_config "hypr"
-    link_config "nvim"
     link_config "waybar"
+}
+
+setup_all() {
+    setup_hyprland
+    link_config "nvim"
     link_home "tmux/.tmux.conf"
     link_home "tmux/.tmux.conf.local"
 }
@@ -79,18 +83,17 @@ echo
 info "What would you like to set up?"
 
 PS3="Enter a number: "
-select opt in "hypr" "nvim" "waybar" "tmux" "all of the above" "quit"; do
+select opt in "hyprland + waybar" "nvim" "tmux" "all of the above" "quit"; do
     case $REPLY in
-        1) link_config "hypr"; break ;;
+        1) setup_hyprland; break ;;
         2) link_config "nvim"; break ;;
-        3) link_config "waybar"; break ;;
-        4)
+        3)
             link_home "tmux/.tmux.conf"
             link_home "tmux/.tmux.conf.local"
             break
             ;;
-        5) setup_all; break ;;
-        6) info "exiting"; exit 0 ;;
+        4) setup_all; break ;;
+        5) info "exiting"; exit 0 ;;
         *) warn "invalid option: $REPLY" ;;
     esac
 done
