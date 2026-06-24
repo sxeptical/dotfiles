@@ -126,7 +126,7 @@ tmux_conf_update_plugins_on_reload=true
 tmux_conf_uninstall_plugins_on_reload=true
 
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'nixpare/tmux-which-key'
+set -g @plugin 'alexwforsythe/tmux-which-key'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
