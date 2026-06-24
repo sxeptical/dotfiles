@@ -23,11 +23,13 @@ link_config() {
 }
 
 link_home() {
-    local name="$1"
-    local src="$DOTFILES_DIR/$name/$2"
-    local dest="$HOME/$2"
+    local relpath="$1"
+    local file
+    file="$(basename "$relpath")"
+    local src="$DOTFILES_DIR/$relpath"
+    local dest="$HOME/$file"
 
-    _link "$src" "$dest" "$name"
+    _link "$src" "$dest" "$relpath"
 }
 
 _link() {
@@ -55,6 +57,14 @@ _link() {
     info "linked $label"
 }
 
+setup_all() {
+    link_config "hypr"
+    link_config "nvim"
+    link_config "waybar"
+    link_home "tmux/.tmux.conf"
+    link_home "tmux/.tmux.conf.local"
+}
+
 # Clone dotfiles if not already present
 if [ ! -d "$DOTFILES_DIR" ]; then
     info "cloning dotfiles..."
@@ -64,10 +74,25 @@ else
     git -C "$DOTFILES_DIR" pull
 fi
 
-# Symlink configs
-link_config "hypr"
-link_config "nvim"
-link_config "waybar"
-link_home "tmux" ".tmux.conf"
+# Selection menu
+echo
+info "What would you like to set up?"
+
+PS3="Enter a number: "
+select opt in "hypr" "nvim" "waybar" "tmux" "all of the above" "quit"; do
+    case $REPLY in
+        1) link_config "hypr"; break ;;
+        2) link_config "nvim"; break ;;
+        3) link_config "waybar"; break ;;
+        4)
+            link_home "tmux/.tmux.conf"
+            link_home "tmux/.tmux.conf.local"
+            break
+            ;;
+        5) setup_all; break ;;
+        6) info "exiting"; exit 0 ;;
+        *) warn "invalid option: $REPLY" ;;
+    esac
+done
 
 info "setup complete"
