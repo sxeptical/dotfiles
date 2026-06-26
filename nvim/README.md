@@ -11,7 +11,6 @@ A [LazyVim](https://github.com/LazyVim/LazyVim) based Neovim configuration with 
 
 ### Editor Enhancements
 - **[snacks.nvim](https://github.com/folke/snacks.nvim)** - Dashboard with custom ASCII art
-- **[copilot.vim](https://github.com/github/copilot.vim)** - GitHub Copilot AI completions
 
 ### Theme
 - **[catppuccin](https://github.com/catppuccin/nvim)** - Catppuccin Mocha color scheme
