@@ -22,6 +22,15 @@ link_config() {
     _link "$src" "$dest" "$name"
 }
 
+link_config_as() {
+    local src_name="$1"
+    local dest_name="$2"
+    local src="$DOTFILES_DIR/$src_name"
+    local dest="$CONFIG_DIR/$dest_name"
+
+    _link "$src" "$dest" "$src_name -> $dest_name"
+}
+
 link_home() {
     local relpath="$1"
     local file
@@ -62,9 +71,16 @@ setup_hyprland() {
     link_config "waybar"
 }
 
+setup_emacs() {
+    # Doom Emacs stores the user's private config in ~/.config/doom.
+    # Keep the repo folder named "emacs" for clarity.
+    link_config_as "emacs" "doom"
+}
+
 setup_all() {
     setup_hyprland
     link_config "nvim"
+    setup_emacs
     link_home "tmux/.tmux.conf"
     link_home "tmux/.tmux.conf.local"
 }
@@ -83,17 +99,18 @@ echo
 info "What would you like to set up?"
 
 PS3="Enter a number: "
-select opt in "hyprland + waybar" "nvim" "tmux" "all of the above" "quit"; do
+select opt in "hyprland + waybar" "nvim" "emacs" "tmux" "all of the above" "quit"; do
     case $REPLY in
         1) setup_hyprland; break ;;
         2) link_config "nvim"; break ;;
-        3)
+        3) setup_emacs; break ;;
+        4)
             link_home "tmux/.tmux.conf"
             link_home "tmux/.tmux.conf.local"
             break
             ;;
-        4) setup_all; break ;;
-        5) info "exiting"; exit 0 ;;
+        5) setup_all; break ;;
+        6) info "exiting"; exit 0 ;;
         *) warn "invalid option: $REPLY" ;;
     esac
 done
