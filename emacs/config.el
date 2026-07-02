@@ -29,6 +29,15 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 12 :weight 'normal)
+      nerd-icons-font-family "JetBrainsMono Nerd Font Mono")
+
+(defun +steven/set-nerd-icons-fonts-h ()
+  (dolist (range '((#xe000 . #xf8ff) (#xf0000 . #xfffff)))
+    (set-fontset-font t range nerd-icons-font-family)))
+
+(add-hook 'after-setting-font-hook #'+steven/set-nerd-icons-fonts-h)
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
