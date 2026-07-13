@@ -71,6 +71,10 @@ setup_hyprland() {
     link_config "waybar"
 }
 
+setup_kitty() {
+    link_config "kitty"
+}
+
 setup_emacs() {
     # Doom Emacs stores the user's private config in ~/.config/doom.
     # Keep the repo folder named "emacs" for clarity.
@@ -79,6 +83,7 @@ setup_emacs() {
 
 setup_all() {
     setup_hyprland
+    setup_kitty
     link_config "nvim"
     setup_emacs
     link_home "tmux/.tmux.conf"
@@ -99,18 +104,19 @@ echo
 info "What would you like to set up?"
 
 PS3="Enter a number: "
-select opt in "hyprland + waybar" "nvim" "emacs" "tmux" "all of the above" "quit"; do
+select opt in "hyprland + waybar" "kitty" "nvim" "emacs" "tmux" "all of the above" "quit"; do
     case $REPLY in
         1) setup_hyprland; break ;;
-        2) link_config "nvim"; break ;;
-        3) setup_emacs; break ;;
-        4)
+        2) setup_kitty; break ;;
+        3) link_config "nvim"; break ;;
+        4) setup_emacs; break ;;
+        5)
             link_home "tmux/.tmux.conf"
             link_home "tmux/.tmux.conf.local"
             break
             ;;
-        5) setup_all; break ;;
-        6) info "exiting"; exit 0 ;;
+        6) setup_all; break ;;
+        7) info "exiting"; exit 0 ;;
         *) warn "invalid option: $REPLY" ;;
     esac
 done
