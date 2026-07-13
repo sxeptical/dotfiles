@@ -1,6 +1,6 @@
 # Dotfiles
 
-My configs for neovim, emacs, tmux and hyprland
+My configs for neovim, emacs, tmux, kitty and hyprland
 
 ## Setup
 
@@ -18,6 +18,7 @@ The script is idempotent — safe to re-run. Existing configs are backed up befo
 ```bash
 git clone https://github.com/sxeptical/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/hypr ~/.config/hypr
+ln -s ~/dotfiles/kitty ~/.config/kitty
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/emacs ~/.config/doom
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
