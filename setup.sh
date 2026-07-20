@@ -5,6 +5,32 @@ DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
 REPO_URL="https://github.com/sxeptical/dotfiles.git"
 
+# Hyprland packages to install
+HYPRLAND_PKGS=(
+    hyprland
+    hyprlock
+    hypridle
+    hyprpaper
+    hyprcursor
+    hyprgraphics
+    hyprlang
+    hyprutils
+    hyprtoolkit
+    hyprwayland-scanner
+    hyprwire
+    xdg-desktop-portal-hyprland
+    waybar
+    rofi-wayland
+    swww
+    grim
+    slurp
+    wl-clipboard
+    brightnessctl
+    playerctl
+    dunst
+    thunar
+)
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -67,8 +93,11 @@ _link() {
 }
 
 setup_hyprland() {
+    info "Installing Hyprland packages..."
+    sudo pacman -S --needed --noconfirm "${HYPRLAND_PKGS[@]}" 2>&1 | tail -3
     link_config "hypr"
     link_config "waybar"
+    link_config "rofi"
 }
 
 setup_kitty() {
