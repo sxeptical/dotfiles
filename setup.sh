@@ -95,9 +95,9 @@ _link() {
 setup_hyprland() {
     info "Installing Hyprland packages..."
     sudo pacman -S --needed --noconfirm "${HYPRLAND_PKGS[@]}" 2>&1 | tail -3
-    link_config "hypr"
-    link_config "waybar"
-    link_config "rofi"
+    link_config_as "hyprland/hypr" "hypr"
+    link_config_as "hyprland/waybar" "waybar"
+    link_config_as "hyprland/rofi" "rofi"
 }
 
 setup_kitty() {
