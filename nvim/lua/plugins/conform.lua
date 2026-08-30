@@ -6,6 +6,7 @@ return {
       typescript = { "prettier" },
       json = { "prettier" },
       python = { "black" },
+      cpp = { "clang_format" },
     },
   },
 }

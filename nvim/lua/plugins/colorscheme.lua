@@ -8,12 +8,16 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
   },
+  {
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
+  },
 
   -- Default colorscheme on startup
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      colorscheme = "kanagawa",
     },
     priority = 1000,
   },
