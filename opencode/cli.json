@@ -1,0 +1,18 @@
+{
+  "theme": {
+    "name": "kanagawa"
+  },
+  "keybinds": {
+    "agent.cycle": ["tab", "shift+tab"]
+  },
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false,
+    "thinking": "show",
+    "grouping": "auto"
+  },
+  "animations": true
+}

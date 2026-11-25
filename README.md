@@ -1,6 +1,6 @@
 # Dotfiles
 
-My configs for neovim, emacs, tmux, kitty, and Hyprland (hypr, waybar, rofi).
+My configs for neovim, emacs, tmux, kitty, opencode, and Hyprland (hypr, waybar, rofi).
 
 ## Structure
 
@@ -13,6 +13,7 @@ dotfiles/
 ├── emacs/          # Doom Emacs private config
 ├── kitty/          # Kitty terminal config
 ├── nvim/           # Neovim (LazyVim) config
+├── opencode/       # OpenCode config, agents, skills
 ├── tmux/           # Tmux config
 └── setup.sh        # Automated setup script
 ```
@@ -31,13 +32,14 @@ The script is idempotent — safe to re-run. Existing configs are backed up befo
 ### Manual
 
 ```bash
-git clone https://github.com/sxeptical/dotfiles.git ~/dotfiles
+git clone --recurse-submodules https://github.com/sxeptical/dotfiles.git ~/dotfiles
 ln -s ~/dotfiles/hyprland/hypr ~/.config/hypr
 ln -s ~/dotfiles/hyprland/waybar ~/.config/waybar
 ln -s ~/dotfiles/hyprland/rofi ~/.config/rofi
 ln -s ~/dotfiles/kitty ~/.config/kitty
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ln -s ~/dotfiles/emacs ~/.config/doom
+ln -s ~/dotfiles/opencode ~/.config/opencode
 ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 ```
 

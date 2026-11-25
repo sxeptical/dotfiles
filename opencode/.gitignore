@@ -1,0 +1,15 @@
+node_modules
+package.json
+package-lock.json
+bun.lock
+.DS_Store
+
+# secrets / machine-specific
+service.json
+
+# backups
+*.backup
+*.v2-backup
+
+__pycache__/
+.graphify_python

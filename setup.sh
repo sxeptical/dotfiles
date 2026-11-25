@@ -110,11 +110,17 @@ setup_emacs() {
     link_config_as "emacs" "doom"
 }
 
+setup_opencode() {
+    git -C "$DOTFILES_DIR" submodule update --init opencode/skills
+    link_config "opencode"
+}
+
 setup_all() {
     setup_hyprland
     setup_kitty
     link_config "nvim"
     setup_emacs
+    setup_opencode
     link_home "tmux/.tmux.conf"
     link_home "tmux/.tmux.conf.local"
 }
@@ -133,7 +139,7 @@ echo
 info "What would you like to set up?"
 
 PS3="Enter a number: "
-select opt in "hyprland + waybar" "kitty" "nvim" "emacs" "tmux" "all of the above" "quit"; do
+select opt in "hyprland + waybar" "kitty" "nvim" "emacs" "tmux" "opencode" "all of the above" "quit"; do
     case $REPLY in
         1) setup_hyprland; break ;;
         2) setup_kitty; break ;;
@@ -144,8 +150,9 @@ select opt in "hyprland + waybar" "kitty" "nvim" "emacs" "tmux" "all of the abov
             link_home "tmux/.tmux.conf.local"
             break
             ;;
-        6) setup_all; break ;;
-        7) info "exiting"; exit 0 ;;
+        6) setup_opencode; break ;;
+        7) setup_all; break ;;
+        8) info "exiting"; exit 0 ;;
         *) warn "invalid option: $REPLY" ;;
     esac
 done

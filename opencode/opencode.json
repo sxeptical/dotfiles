@@ -1,0 +1,97 @@
+{
+  "$schema": "https://opencode.ai/config.schema.json",
+  "autoupdate": true,
+  "experimental": {
+    "todo": true,
+    "image_generate": true
+  },
+  "default_agent": "build",
+  "agents": {
+    "build": {
+      "model": "opencode-go/glm-5.3#high",
+      "mode": "primary"
+    }
+  },
+  "permission": {
+    "read": {
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.pem": "deny",
+      "*.key": "deny",
+      "*.env.example": "allow",
+      "*": "allow"
+    },
+    "bash": {
+      "rm *": "deny",
+      "rm -*": "deny",
+      "sudo *": "deny",
+      "shutdown *": "deny",
+      "reboot *": "deny",
+      "mkfs *": "deny",
+      "dd *": "deny",
+      "git push *": "deny",
+      "*": "ask"
+    },
+    "external_directory": {
+      "/Users/steventok/.local/share/opencode/tool-output/*": "allow",
+      "/var/folders/3r/57z77zpd5ys8hdr56tnqrk380000gn/T/opencode/*": "allow",
+      "*": "deny"
+    }
+  },
+  "lsp": true,
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 10000
+  },
+  "mcp": {
+    "github": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "enabled": true,
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "cloudflare": {
+      "type": "remote",
+      "url": "https://mcp.cloudflare.com/mcp",
+      "enabled": true,
+      "oauth": {}
+    },
+    "MCP_DOCKER": {
+      "type": "local",
+      "command": ["docker", "mcp", "gateway", "run", "--profile", "anomaly"],
+      "enabled": true
+    },
+    "cap": {
+      "type": "local",
+      "command": ["/Users/steventok/.cap/bin/cap", "mcp", "serve"],
+      "enabled": true
+    },
+    "servers": {
+      "browse": {
+        "type": "local",
+        "command": [
+          "/Users/steventok/.local/bin/browse",
+          "mcp"
+        ],
+        "environment": {
+          "OPENCODE_BROWSER_RUNTIME": "auto-update"
+        }
+      }
+    }
+  },
+  "plugins": [],
+  "disabled_providers": [
+    "openai"
+  ],
+  "policies": [
+    {
+      "action": "skill.use",
+      "resource": "chrome-browser",
+      "effect": "deny"
+    }
+  ]
+}

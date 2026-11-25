@@ -1,0 +1,6 @@
+[submodule "opencode/skills/prompt-master"]
+	path = opencode/skills/prompt-master
+	url = https://github.com/nidhinjs/prompt-master.git
+[submodule "opencode/skills/obsidian-skills"]
+	path = opencode/skills/obsidian-skills
+	url = https://github.com/kepano/obsidian-skills.git
